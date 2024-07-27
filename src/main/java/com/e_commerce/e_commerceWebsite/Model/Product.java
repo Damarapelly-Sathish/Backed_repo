@@ -1,6 +1,7 @@
 package com.e_commerce.e_commerceWebsite.Model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Product {
 	 @Column
 	 private Long Price;
 	 
+	 @Column
+	 private Byte[] image;	 
 	 @Column
 	 private Long QuantityAvailable;
 
@@ -57,6 +60,7 @@ public class Product {
 	public void setPrice(Long price) {
 		Price = price;
 	}
+
 
 	public Long getQuantityAvailable() {
 		return QuantityAvailable;
