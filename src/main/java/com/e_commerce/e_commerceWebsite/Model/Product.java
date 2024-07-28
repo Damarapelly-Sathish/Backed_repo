@@ -1,6 +1,7 @@
 package com.e_commerce.e_commerceWebsite.Model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
