@@ -8,11 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "products")
+@Table(name = "Products")
 public class Product {
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long ProductId;
+	 private Long Productid;
 	 
 	 @Column
 	 private String Name;
@@ -24,14 +24,14 @@ public class Product {
 	 private Long Price;
 	 
 	 @Column
-	 private Long QuantityAvailable;
+	 private Long Quantityavailable;
 
-	public Long getProductId() {
-		return ProductId;
+	public Long getProductid() {
+		return Productid;
 	}
 
-	public void setProductId(Long productId) {
-		ProductId = productId;
+	public void setProductid(Long productid) {
+		Productid = productid;
 	}
 
 	public String getName() {
@@ -58,13 +58,15 @@ public class Product {
 		Price = price;
 	}
 
-	public Long getQuantityAvailable() {
-		return QuantityAvailable;
+	public Long getQuantityavailable() {
+		return Quantityavailable;
 	}
 
-	public void setQuantityAvailable(Long quantityAvailable) {
-		QuantityAvailable = quantityAvailable;
+	public void setQuantityavailable(Long quantityavailable) {
+		Quantityavailable = quantityavailable;
 	}
+
+	 
 	 
 	 
 	
