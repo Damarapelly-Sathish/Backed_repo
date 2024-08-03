@@ -11,6 +11,7 @@ public class DressProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Productid;
     
     @Column
     private String name;
@@ -21,9 +22,16 @@ public class DressProduct {
     private Double price;
     
     @Column
-    @Lob
-    private byte[] image;
+    private String image;
 
+   
+	public Long getProductid() {
+		return Productid;
+	}
+
+	public void setProductid(Long productid) {
+		Productid = productid;
+	}
 
 	public String getName() {
 		return name;
@@ -49,11 +57,11 @@ public class DressProduct {
 		this.price = price;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
