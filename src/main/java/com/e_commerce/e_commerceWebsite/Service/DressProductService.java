@@ -44,15 +44,24 @@ public class DressProductService {
                     System.out.println("Invalid price: " + fields[2]);
                    
                 }
-                String imageName = fields[3];
-
-
+                String imageName = fields[4];
+                Double discount = null;
+                discount = Double.parseDouble(fields[3]);
+                int review=Integer.parseInt(fields[5]);
+                int rating=Integer.parseInt(fields[6]);
+                String gender = fields[7];
+                String caterogy = fields[8];
                 DressProduct product = new DressProduct();
                 product.setName(name);
                 product.setDescription(description);
                 product.setPrice(price);
                 product.setImage(imageName);
-
+                product.setDiscount(discount);
+                product.setReview(review);
+                product.setRating(rating);
+                product.setGender(gender);
+                product.setCategory(caterogy);
+                
                 dressProductRepository.save(product);
             }
         }
@@ -61,5 +70,11 @@ public class DressProductService {
 
 	public List<DressProduct> getProducts() {
 		return dressProductRepository.findAll();
+	}
+	public List<DressProduct> getFilterProducts(String name) {
+		return dressProductRepository.findByName(name);
+	}
+	public List<DressProduct> getProductsByCategory(String category){
+		return dressProductRepository.findByCategory(category);
 	}
 }

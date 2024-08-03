@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.e_commerce.e_commerceWebsite.Model.DressProduct;
 import com.e_commerce.e_commerceWebsite.Service.DressProductService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -35,5 +36,15 @@ public class ProductController {
         List<DressProduct> products = productService.getProducts();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-	
+    @GetMapping("/getproduct/filter")
+    public ResponseEntity<List<DressProduct>> getFilterProducts(@RequestParam(required = false) String name,
+            @RequestParam(required = false) String category) {
+    	if(name!=null) {
+        List<DressProduct> productsFilter = productService.getFilterProducts(name);
+        return new ResponseEntity<>(productsFilter, HttpStatus.OK);}
+    	else if(category!=null) {
+        List<DressProduct> productsByCategory = productService.getProductsByCategory(category);
+        return new ResponseEntity<>(productsByCategory, HttpStatus.OK);}
+		return null;
+    }
 }

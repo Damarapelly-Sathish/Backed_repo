@@ -23,8 +23,62 @@ public class DressProduct {
     
     @Column
     private String image;
-
+    
+    @Column
+    private Double discount;
+    
+    @Column
+    private int rating;
    
+    @Column
+    private int review;
+    
+    @Column
+    private String gender;
+    
+    @Column
+    private String category;
+    
+	public Double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public int getReview() {
+		return review;
+	}
+
+	public void setReview(int review) {
+		this.review = review;
+	}
+
 	public Long getProductid() {
 		return Productid;
 	}
