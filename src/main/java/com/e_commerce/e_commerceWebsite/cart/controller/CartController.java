@@ -2,6 +2,7 @@ package com.e_commerce.e_commerceWebsite.cart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.e_commerce.e_commerceWebsite.Model.Cart;
 import com.e_commerce.e_commerceWebsite.Model.CartItem;
 import com.e_commerce.e_commerceWebsite.Service.CartService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/cart")
 public class CartController {
@@ -31,12 +33,12 @@ public class CartController {
     }
 
     @PostMapping("/{userId}/update")
-    public ResponseEntity<Cart> updateItemQuantity(@PathVariable String userId, @RequestParam String productId, @RequestParam int quantity) {
+    public ResponseEntity<Cart> updateItemQuantity(@PathVariable String userId, @RequestParam int productId, @RequestParam int quantity) {
         return ResponseEntity.ok(cartService.updateItemQuantity(userId, productId, quantity));
     }
 
     @PostMapping("/{userId}/remove")
-    public ResponseEntity<Cart> removeItemFromCart(@PathVariable String userId, @RequestParam String productId) {
+    public ResponseEntity<Cart> removeItemFromCart(@PathVariable String userId, @RequestParam int productId) {
         return ResponseEntity.ok(cartService.removeItemFromCart(userId, productId));
     }
 	

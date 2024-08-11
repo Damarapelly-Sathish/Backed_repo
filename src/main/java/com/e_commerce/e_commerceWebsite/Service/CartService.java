@@ -21,7 +21,7 @@ public class CartService {
     public Cart addItemToCart(String userId, CartItem item) {
         Cart cart = getCart(userId);
         Optional<CartItem> existingItem = cart.getItems().stream()
-                .filter(i -> i.getProductId().equals(item.getProductId()))
+                .filter(i -> i.getProductid() == item.getProductid())
                 .findFirst();
 
         if (existingItem.isPresent()) {
@@ -33,19 +33,19 @@ public class CartService {
         return cartRepository.save(cart);
     }
 
-    public Cart updateItemQuantity(String userId, String productId, int quantity) {
+    public Cart updateItemQuantity(String userId, int productId, int quantity) {
         Cart cart = getCart(userId);
         Optional<CartItem> existingItem = cart.getItems().stream()
-                .filter(i -> i.getProductId().equals(productId))
+                .filter(i -> i.getProductid() == productId)
                 .findFirst();
 
         existingItem.ifPresent(cartItem -> cartItem.setQuantity(quantity));
         return cartRepository.save(cart);
     }
 
-    public Cart removeItemFromCart(String userId, String productId) {
+    public Cart removeItemFromCart(String userId, int productId) {
         Cart cart = getCart(userId);
-        cart.getItems().removeIf(item -> item.getProductId().equals(productId));
+        cart.getItems().removeIf(item -> item.getProductid() == productId);
         return cartRepository.save(cart);
     }
 

@@ -11,7 +11,7 @@ public class CartItem {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-	    private String productId;
+	    private int productid;
 	    private String name;
 	    private double price;
 	    private int quantity;
@@ -19,8 +19,8 @@ public class CartItem {
 	    // Constructors, Getters, Setters
 	    public CartItem() {}
 
-	    public CartItem(String productId, String name, double price, int quantity) {
-	        this.productId = productId;
+	    public CartItem(int productid, String name, double price, int quantity) {
+	        this.productid = productid;
 	        this.name = name;
 	        this.price = price;
 	        this.quantity = quantity;
@@ -34,15 +34,15 @@ public class CartItem {
 	        this.id = id;
 	    }
 
-	    public String getProductId() {
-	        return productId;
-	    }
+	    public int getProductid() {
+			return productid;
+		}
 
-	    public void setProductId(String productId) {
-	        this.productId = productId;
-	    }
+		public void setProductid(int productid) {
+			this.productid = productid;
+		}
 
-	    public String getName() {
+		public String getName() {
 	        return name;
 	    }
 
