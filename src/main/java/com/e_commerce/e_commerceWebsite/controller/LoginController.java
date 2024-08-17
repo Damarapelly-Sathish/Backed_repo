@@ -1,21 +1,15 @@
 package com.e_commerce.e_commerceWebsite.controller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.e_commerce.e_commerceWebsite.Model.AuthRequest;
-import com.e_commerce.e_commerceWebsite.Service.JwtUtil;
+import com.e_commerce.e_commerceWebsite.Model.Product;
+import com.e_commerce.e_commerceWebsite.Model.User;
+import com.e_commerce.e_commerceWebsite.Service.LoginService;
 
 @RestController
 @RequestMapping("/account")
@@ -23,34 +17,22 @@ import com.e_commerce.e_commerceWebsite.Service.JwtUtil;
 public class LoginController {
 	
 	@Autowired
-	private AuthenticationManager authenticationManager;
+	private LoginService LoginService;
 
-	@Autowired
-	private UserDetailsService userDetailsService;
-
-	@Autowired
-	private JwtUtil jwtUtil;
-
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
 	
-	@PostMapping("/login")
-	public String createToken(@RequestBody AuthRequest authRequest) throws Exception {
+	@PostMapping("/SignUp")
+	public String createToken(@RequestBody User userData) throws Exception {
+		String Email=userData.getEmail();
+		int validation=LoginService.isEmailExist(Email);
 	    try {
-	        authenticationManager.authenticate(
-	                (Authentication) new UsernamePasswordAuthenticationToken(authRequest.getEmailid(), authRequest.getPassword())
-	        );
+	    	if(validation!=1)
+	            LoginService.addCred(userData);
 	    } catch (Exception ex) {
-	        throw new Exception("Invalid username or password");
+	        throw new Exception("Already existed with this Email");
 	    }
-
-	    final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmailid());
-	    return jwtUtil.generateToken(userDetails);
+        return "Account is successfully created";
 	}
 
-	
-	
-	
 	
 }
