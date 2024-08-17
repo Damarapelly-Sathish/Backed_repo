@@ -56,6 +56,11 @@
       		<groupId>com.zaxxer</groupId>
       		<artifactId>HikariCP</artifactId>
 		</dependency>
+		<dependency>
+        <groupId>com.razorpay</groupId>
+        <artifactId>razorpay-java</artifactId>
+        <version>1.4.0</version>
+    </dependency>
 	</dependencies>
 
 	<build>
