@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.e_commerce.e_commerceWebsite.Model.Order;
-import com.e_commerce.e_commerceWebsite.Security.OrderService;
+import com.e_commerce.e_commerceWebsite.Service.OrderService;
 
 import java.util.List;
 

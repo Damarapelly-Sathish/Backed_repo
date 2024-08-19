@@ -11,7 +11,9 @@ import com.e_commerce.e_commerceWebsite.Model.User;
 
 @Repository
 public interface loginRepository extends JpaRepository<User, Long> {
-	@Query(value = "SELECT EXISTS(SELECT 1 FROM dress_product WHERE name = :Email)", nativeQuery = true)
+	@Query(value = "SELECT EXISTS(SELECT 1 FROM users WHERE email = :Email)", nativeQuery = true)
 	 int isEmailExist(String Email);
+	@Query(value="SELECT id from users where email= :Email",nativeQuery=true)
+      String getIdWithEmail(String Email);
 	
 }

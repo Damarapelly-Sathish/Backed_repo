@@ -17,5 +17,7 @@ public class LoginService {
     public int isEmailExist(String Email) {
 		return loginRepository.isEmailExist(Email);
 	}  
-    
+    public String getId(String Email) {
+    	return loginRepository.getIdWithEmail(Email);
+    }
 }
